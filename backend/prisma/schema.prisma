@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
+  password String
+}
+
+model TowerType {
+  id     String @id @default(uuid())
+  name   String
+  damage Int
+  range  Int
+  cost   Int
+}
+
+model EnemyType {
+  id     String @id @default(uuid())
+  name   String
+  hp     Int
+  speed  Int
+  reward Int
+}
